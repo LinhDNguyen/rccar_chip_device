@@ -1,0 +1,17 @@
+{
+  "name": "rccar",
+  "version": "0.0.1",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Linh Nguyen",
+  "license": "GPLv3",
+  "dependencies": {
+    "bleno": "^0.3.5",
+    "play-sound": "^1.1.1",
+    "chip-io": "^2.1.1",
+    "johnny-five": "^0.10.6"
+  }
+}
