@@ -1,15 +1,15 @@
 var bleno = require('bleno');
 
-var SystemInformationService = require('./systeminformationservice');
+var CarControlService = require('./carcontrolservice');
 
-var systemInformationService = new SystemInformationService();
+var carService = new CarControlService();
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
 
   if (state === 'poweredOn') {
 
-    bleno.startAdvertising(bleno.name, [systemInformationService.uuid]);
+    bleno.startAdvertising('RC CAR', [carService.uuid]);
   }
   else {
 
@@ -26,7 +26,7 @@ bleno.on('advertisingStart', function(error) {
   if (!error) {
 
     bleno.setServices([
-      systemInformationService
+      carService
     ]);
   }
 });
