@@ -10,8 +10,9 @@
   "license": "GPLv3",
   "dependencies": {
     "bleno": "^0.3.5",
-    "play-sound": "^1.1.1",
     "chip-io": "^2.1.1",
-    "johnny-five": "^0.10.6"
+    "hashmap": "^2.0.6",
+    "johnny-five": "^0.10.6",
+    "play-sound": "^1.1.1"
   }
 }
