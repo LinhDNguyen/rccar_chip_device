@@ -44,20 +44,25 @@ function stopMusic() {
 CarSoundCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   if (MUSIC_LIST.count() == 0) {
     // Insert default values
-    MUSIC_LIST.set(1, "Music 1.mp3");
-    MUSIC_LIST.set(2, "Music 2.mp3");
-    MUSIC_LIST.set(3, "Music 3.mp3");
+    MUSIC_LIST.set(1, "Air-On-The-G-String-Various-Artists.mp3");
+    MUSIC_LIST.set(2, "Canon-In-D-Various-Artists.mp3");
+    MUSIC_LIST.set(3, "Gymnopedie-No-1-Various-Artists.mp3");
+    MUSIC_LIST.set(4, "Jesu-Joy-Of-Man-s-Desiring-Various-Artists.mp3");
   }
   if (offset) {
     callback(this.RESULT_ATTR_NOT_LONG);
   } else if (data.length !== 2) {
+    console.log("invalid length " + data.length);
     callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
   } else {
-    var music_code = data.readUInt16LE(0);
+    var music_code = data.readUInt8(0);
+    var music_volume = data.readUInt8(1);
     var music_name = 'UNKNOWN';
 
+    console.log("Car Sound " + music_code + ":" + music_volume);
     if (MUSIC_LIST.has(music_code)) {
       music_name = MUSIC_LIST.get(music_code);
+      playMusic(music_name, music_volume);
     }
     console.log('play music:' +music_code + '-' + music_name + ';');
 

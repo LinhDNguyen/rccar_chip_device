@@ -113,7 +113,7 @@ CarMovingCharacteristic.prototype.onWriteRequest = function(data, offset, withou
     var angle = data.readUInt16LE(0);
     var power = data.readUInt16LE(2);
 
-    // console.log('a:' + angle + ',p:' + power);
+    console.log('a:' + angle + ',p:' + power);
 
     if (power > 40) {
       if ((angle > 45) && (angle <= 135)) {
