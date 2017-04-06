@@ -38,6 +38,7 @@ function stopMusic() {
     audio.kill();
     isPlaying = false;
     audio = undefined;
+    console.log("Current audio killed");
   }
 }
 
