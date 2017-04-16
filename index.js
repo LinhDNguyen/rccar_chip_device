@@ -30,3 +30,15 @@ bleno.on('advertisingStart', function(error) {
     ]);
   }
 });
+
+bleno.on('disconnect', function(clientAddress) {
+  console.log('on -> disconnect:' + clientAddress);
+
+  process.exit();
+});
+
+bleno.on('advertisingStop', function() {
+  console.log('on -> advertisingStop:' + clientAddress);
+
+  process.exit();
+});
