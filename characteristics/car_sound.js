@@ -26,8 +26,12 @@ CarSoundCharacteristic.prototype.onWriteRequest = function(data, offset, without
 		console.log("Car Sound " + music_code + ":" + music_volume);
 		var music_name = SoundPlayer.get_name(music_code);
 		if (music_name != undefined) {
-			SoundPlayer.play(music_name, music_volume);
-			console.log('play music:' +music_code + '-' + music_name + ';');
+			if(music_name === '___NO_SOUND___') {
+				SoundPlayer.nosound();
+			} else {
+				SoundPlayer.play(music_name, music_volume);
+				console.log('play music:' +music_code + '-' + music_name + ';');
+			}
 		}
 
 		callback(this.RESULT_SUCCESS);

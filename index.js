@@ -5,40 +5,40 @@ var CarControlService = require('./carcontrolservice');
 var carService = new CarControlService();
 
 bleno.on('stateChange', function(state) {
-  console.log('on -> stateChange: ' + state);
+	console.log('on -> stateChange: ' + state);
 
-  if (state === 'poweredOn') {
+	if (state === 'poweredOn') {
 
-    bleno.startAdvertising('RC CAR', [carService.uuid]);
-  }
-  else {
+		bleno.startAdvertising('RC CAR', [carService.uuid]);
+	}
+	else {
 
-    bleno.stopAdvertising();
-  }
+		bleno.stopAdvertising();
+	}
 });
 
 bleno.on('advertisingStart', function(error) {
 
-  console.log('on -> advertisingStart: ' +
-    (error ? 'error ' + error : 'success')
-  );
+	console.log('on -> advertisingStart: ' +
+		(error ? 'error ' + error : 'success')
+	);
 
-  if (!error) {
+	if (!error) {
 
-    bleno.setServices([
-      carService
-    ]);
-  }
+		bleno.setServices([
+			carService
+		]);
+	}
 });
 
 bleno.on('disconnect', function(clientAddress) {
-  console.log('on -> disconnect:' + clientAddress);
+	console.log('on -> disconnect: ' + clientAddress + ". Program will exit!!!");
 
-  process.exit();
+	process.exit();
 });
 
 bleno.on('advertisingStop', function() {
-  console.log('on -> advertisingStop:' + clientAddress);
+	console.log('on -> advertisingStop:' + clientAddress);
 
-  process.exit();
+	process.exit();
 });
